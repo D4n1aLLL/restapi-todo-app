@@ -79,18 +79,22 @@ WSGI_APPLICATION = 'Todo_App_RESTApi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'todoappdb',
+#        'USER':'postgres',
+#        'PASSWORD':'0900dani',
+#        'HOST':'localhost',
+#    }
+#}
+#db_from_env = dj_database_url.confg(conn_max_age=600)
+#DATABASES['default'].update(db_fromenv)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todoappdb',
-        'USER':'postgres',
-        'PASSWORD':'0900dani',
-        'HOST':'localhost',
-    }
-}
-db_from_env = dj_database_url.confg(conn_max_age=600)
-DATABASES['default'].update(db_fromenv)
-
+        'default':dj_database_url.config(
+            default=config('DATABASE_URL')
+            )
+        }
 
 
 # Password validation
